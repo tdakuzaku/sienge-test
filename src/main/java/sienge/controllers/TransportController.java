@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import sienge.models.Transport;
-import sienge.services.TransportService;
+import sienge.services.TransportServiceInterface;
 
 @RequestMapping("/transports")
 @RestController
 public class TransportController {
-  private TransportService transportService;
+  private TransportServiceInterface transportService;
 
   /**
    * Setup the TransportController
@@ -17,12 +17,12 @@ public class TransportController {
    * @param transportService TransportService
    */
   @Autowired
-  public TransportController(TransportService transportService) {
+  public TransportController(TransportServiceInterface transportService) {
     this.transportService = transportService;
   }
 
-  @PostMapping
-  public Float calculate(@RequestBody Transport input) {
+  @GetMapping("/calculate")
+  public Float calculate() {
     return transportService.shippingCalculation();
   }
 }

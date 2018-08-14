@@ -3,15 +3,6 @@
     <v-toolbar app dark color="primary">
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-text-field
-        label="Buscar"
-        v-model="query"
-        prepend-icon="search"
-        hide-details
-        single-line
-        :solo="solo"
-        :light="solo"
-      ></v-text-field>
     </v-toolbar>
     <v-content>
       <router-view></router-view>
