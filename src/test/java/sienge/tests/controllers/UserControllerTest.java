@@ -69,7 +69,7 @@ public class UserControllerTest {
         mvc.perform(post(path).characterEncoding("UTF-8").content(body).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andExpect(content().json(body));
 
-        // asert (invalid input)
+        // assert (invalid input)
         mvc.perform(post(path).characterEncoding("UTF-8").content(invalid).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }

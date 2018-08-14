@@ -1,55 +1,28 @@
 package sienge.controllers;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import sienge.models.User;
-import sienge.services.UserService;
+import sienge.models.Transport;
+import sienge.services.TransportService;
 
-@RequestMapping("/users")
+@RequestMapping("/transports")
 @RestController
 public class TransportController {
-  private UserService userService;
+  private TransportService transportService;
 
   /**
    * Setup the TransportController
    *
-   * @param userService UserService
+   * @param transportService TransportService
    */
   @Autowired
-  public TransportController(UserService userService) {
-    this.userService = userService;
+  public TransportController(TransportService transportService) {
+    this.transportService = transportService;
   }
 
   @PostMapping
-  public User insert(@RequestBody User input) {
-    // save a single user
-    return userService.save(input);
-  }
-
-  @GetMapping
-  public Iterable<User> search(@RequestParam Optional<String> query) {
-    return userService.list(query);
-  }
-
-  @GetMapping("/{id}")
-  public ResponseEntity<User> findById(@PathVariable long id) {
-    return userService.get(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-  }
-
-  @DeleteMapping("/{id}")
-  public ResponseEntity<Object> deleteById(@PathVariable long id) {
-    if (userService.delete(id)) {
-      return ResponseEntity.noContent().build();
-    }
-    return ResponseEntity.notFound().build();
-  }
-
-  @PutMapping("/{id}")
-  public ResponseEntity<User> updateById(@PathVariable long id, @RequestBody User input) {
-    return userService.update(id, input).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+  public Float calculate(@RequestBody Transport input) {
+    return transportService.shippingCalculation();
   }
 }

@@ -2,9 +2,6 @@
   <v-app>
     <v-toolbar app dark color="primary">
       <v-toolbar-title v-text="title"></v-toolbar-title>
-      <v-btn icon @click="solo = !solo">
-        <v-icon>autorenew</v-icon>
-      </v-btn>
       <v-spacer></v-spacer>
       <v-text-field
         label="Buscar"
