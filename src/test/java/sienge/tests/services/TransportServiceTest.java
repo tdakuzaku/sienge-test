@@ -1,4 +1,4 @@
-package sienge.tests.models;
+package sienge.tests.services;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -9,12 +9,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import sienge.models.Transport;
-import sienge.models.Vehicle;
 
 @RunWith(SpringRunner.class)
-public class TransportTest {
+public class TransportServiceTest {
 
-    @MockBean
+	@MockBean
     private Transport t;
     
     @Before
@@ -23,10 +22,6 @@ public class TransportTest {
 
     private final Transport t1 = new Transport("paved");
     private final Transport t2 = new Transport("dirt");
-    private final Transport t3 = new Transport("dirt");    
-    private final Transport t4 = new Transport("dirt");
-    private final Vehicle v3 = new Vehicle("truck_trunk", 5);
-    private final Vehicle v4 = new Vehicle("truck_trunk", 8);
     
     @Test
     public void checkPavedCost() {
@@ -40,21 +35,5 @@ public class TransportTest {
     		Float cost = 100f;
         assertThat(t2.costByDistance(cost))
             .isEqualTo(62f);
-    }
-    
-    @Test
-    public void checkNormalPaylodCost() {
-    		Float km = 100f;    		
-    		t3.setVehicle(v3);
-        assertThat(t3.costByPayload(km))
-            .isEqualTo(0f);
-    }
-    
-    @Test
-    public void checkAbovePaylodCost() {
-		Float km = 100f;
-    		t4.setVehicle(v4);
-        assertThat(t4.costByPayload(km))
-            .isEqualTo(2.0f);
     }
 }

@@ -41,6 +41,8 @@ public class Transport implements Serializable {
   public Transport(String roadType) {
 	  this.roadType = roadType;
 	  // TODO: dynamic properties
+	  this.payloadMax = 5;
+	  this.payloadAboveCost = 0.02f;
 	  switch(roadType) {
 	  	case "paved":
 	  		this.costPerKm = 0.54f;
@@ -81,7 +83,7 @@ public String toString() {
 	  return km * this.costPerKm;
   }
   
-  public Float costByPayload() {
-	  return (this.payloadMax - this.vehicle.getPayload()) * this.payloadAboveCost;
+  public Float costByPayload(Float km) {
+	  return (this.vehicle.getPayload() > this.payloadMax) ? this.payloadAboveCost * km : 0; 
   }
 }
