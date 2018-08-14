@@ -21,8 +21,8 @@ public class TransportController {
     this.transportService = transportService;
   }
 
-  @GetMapping("/calculate")
-  public Float calculate() {
-    return transportService.shippingCalculation();
+  @PostMapping("/calculate/")
+  public Float calculate(@RequestBody Transport t) {
+    return transportService.shippingCalculation(t);
   }
 }

@@ -37,16 +37,17 @@ public class Transport implements Serializable {
   @Column
   private Integer payload;
 
-  protected Transport() {
+  public Transport() {
   }
 
-  public Transport(String roadType, String vehicleType) {
+  public Transport(String roadType, String vehicleType, Integer payload) {
     this.roadType = roadType;
     this.vehicleType = vehicleType;
+    this.payload = payload;
   }
 
   public String toString() {
-    return "Transport[" + roadType + ", " + vehicleType + "]";
+    return "Transport[" + roadType + ", " + vehicleType + ", " + payload + "]";
   }
 
   public String getRoadType() {
