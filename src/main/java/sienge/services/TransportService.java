@@ -26,11 +26,6 @@ public class TransportService implements TransportServiceInterface {
 	  Float distanceCost = pavedCost + dirtCost;
 	  Float vehicleCost = req.vehicle.getVehicleCost(distanceCost);
 	  Float payloadCost = req.transport.costByPayload(req.pavedDistanceKm + req.dirtDistanceKm);
-	  System.out.println("===========");
-	  System.out.println(distanceCost);
-	  System.out.println(vehicleCost);
-	  System.out.println(payloadCost);
-	  System.out.println("===========");	  
 	  return vehicleCost + payloadCost;
   }
 }
