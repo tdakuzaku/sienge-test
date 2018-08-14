@@ -14,17 +14,12 @@ import javax.validation.constraints.Positive;
 
 @Entity
 @Table(name = "transports")
-public class Transport implements Serializable {
+public class Vehicle implements Serializable {
   private static final long serialVersionUID = 1709299723906950395L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
-
-  @NotNull
-  @NotEmpty
-  @Column
-  private String roadType;
 
   @NotNull
   @NotEmpty
@@ -35,27 +30,24 @@ public class Transport implements Serializable {
   @NotNull
   @NotEmpty
   @Column
+  private Float costByKm;
+
+  @Positive
+  @NotNull
+  @NotEmpty
+  @Column
   private Integer payload;
 
-  public Transport() {
+  public Vehicle() {
   }
 
-  public Transport(String roadType, String vehicleType, Integer payload) {
-    this.roadType = roadType;
+  public Vehicle(String roadType, String vehicleType, Integer payload) {
     this.vehicleType = vehicleType;
     this.payload = payload;
   }
 
   public String toString() {
-    return "Transport[" + roadType + ", " + vehicleType + ", " + payload + "]";
-  }
-
-  public String getRoadType() {
-    return roadType;
-  }
-
-  public void setRoadType(String roadType) {
-    this.roadType = roadType;
+    return "Vehicle[" + vehicleType + ", " + payload + "]";
   }
 
   public String getVehicleType() {
@@ -74,25 +66,19 @@ public class Transport implements Serializable {
 	this.payload = payload;
   }  
   
+  public Float getCostByKm() {
+	return costByKm;
+  }
+
+  public void setCostByKm(Float costByKm) {
+	this.costByKm = costByKm;
+  }
+  
   public long getId() {
     return id;
   }
 
   public void setId(long id) {
     this.id = id;
-  }
-  
-  public Float costByDistance(Float km, Float cost) {
-	  return km * cost;
-  }
-  
-  public Float costByVehicleType(Float cost) {
-//	  return this.vehicle.getCostByKm() * cost;
-	  return cost;
-  }
-  
-  public Float costByPayload(Float max, Float cost) {
-//	  return (max - this.vehicleType.getPayload()) * cost;
-	  return cost;
   }
 }
