@@ -6,10 +6,13 @@ public class RequestWrapper {
   public Float pavedDistanceKm;
   public Float dirtDistanceKm;
   
-  public RequestWrapper(Vehicle vehicle, Transport transportation, Float pavedDistanceKm, Float dirtDistanceKm) {
+  public RequestWrapper() {
+  }
+  
+  public RequestWrapper(Vehicle vehicle, Transport transport, Float pavedDistanceKm, Float dirtDistanceKm) {
 	super();
 	this.vehicle = vehicle;
-	this.transport = transportation;
+	this.transport = transport;
 	this.pavedDistanceKm = pavedDistanceKm;
 	this.dirtDistanceKm = dirtDistanceKm;
   }

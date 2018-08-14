@@ -18,7 +18,9 @@ public class TransportService implements TransportServiceInterface {
 
   public Float shippingCalculation(RequestWrapper req) {
 	  req.transport.setVehicle(req.vehicle);
+	  req.transport.setRoadType("paved");
 	  Float pavedCost = req.transport.costByDistance(req.pavedDistanceKm);
+	  req.transport.setRoadType("dirt");
 	  Float dirtCost = req.transport.costByDistance(req.dirtDistanceKm);
 	  Float distanceCost = pavedCost + dirtCost;
 	  Float vehicleCost = req.vehicle.getVehicleCost(distanceCost);

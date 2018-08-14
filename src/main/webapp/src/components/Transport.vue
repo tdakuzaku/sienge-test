@@ -8,14 +8,15 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field prepend-icon="explore" label="Rodovia pavimentada (Km)" type="number"></v-text-field>
-                  <v-text-field prepend-icon="explore_off" label="Rodovia não-pavimentada (Km)" type="number"></v-text-field>
-                  <v-select prepend-icon="local_shipping" :items="vehicles" label="Veículo"></v-select>
-                  <v-text-field prepend-icon="get_app" label="Carga (Ton)" type="number"></v-text-field>
+                  <v-text-field v-model="data.pavedDistanceKm" prepend-icon="explore" label="Rodovia pavimentada (Km)" type="number"></v-text-field>
+                  <v-text-field v-model="data.dirtDistanceKm" prepend-icon="explore_off" label="Rodovia não-pavimentada (Km)" type="number"></v-text-field>
+                  <v-select v-model="data.vehicle.vehicleType" prepend-icon="local_shipping" item-text="label" item-value="id" :items="vehicles" label="Veículo"></v-select>
+                  <v-text-field v-model="data.vehicle.payload" prepend-icon="get_app" label="Carga (Ton)" type="number"></v-text-field>
+                  <v-btn color="success" @click="calculate">Calcular</v-btn>
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-text-field prepend-icon="attach_money" label="Custo" type="number" disabled></v-text-field>
+                <v-text-field v-model="total" prepend-icon="attach_money" label="Custo" type="number" disabled></v-text-field>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -30,26 +31,29 @@ import axios from 'axios'
 export default Vue.extend({
   data() {
     return {
-      vehicles: ['Caminhão caçamba', 'Caminhão baú', 'Carreta'],
-      vehicle: {},
-      pavedDistanceKm: 0,
-      dirtDistanceKm: 0
+      vehicles: [
+        { id: 'truck_trunk', label: 'Caminhão caçamba' },
+        { id: 'bucket_truck', label: 'Caminhão baú' },
+        { id: 'cart', label: 'Carreta' }
+      ],
+      data: {
+        vehicle: {
+          vehicleType: 'cart',
+          payload: 8
+        },
+        transport: {
+	      },
+        pavedDistanceKm: 100,
+        dirtDistanceKm: 0,
+      },
+      total: null
     }
   },
   methods: {
     calculate: function () {
-      let data = {
-        vehicle: {
-          vehicleType: "truck",
-          costByKm: 1,
-          payload: 5
-        },
-        pavedDistanceKm: 100,
-        dirtDistanceKm: 200
-      }
-      axios.post('/transports/calculate', data)
+      axios.post('/transports/calculate/', this.data)
         .then((result) => {
-          console.log(result)
+          this.total = result.data
         })
         .catch((err) => {
           console.log(err)

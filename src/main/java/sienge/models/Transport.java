@@ -34,29 +34,14 @@ public class Transport implements Serializable {
 
   private Vehicle vehicle;
   
-  private String roadType;
-  
   private Float costPerKm;
+  
+  private String roadType;
 
-  public Transport(String roadType) {
-	  this.roadType = roadType;
-	  // TODO: dynamic properties
-	  this.payloadMax = 5;
-	  this.payloadAboveCost = 0.02f;
-	  switch(roadType) {
-	  	case "paved":
-	  		this.costPerKm = 0.54f;
-	  		break;
-	  	case "dirt":
-	  		this.costPerKm = 0.62f;
-	  		break;
-  		default:
-  			throw new IllegalArgumentException("Invalid road type " + roadType);
-	  }
-  }
-
-  public Transport(Vehicle vehicle) {
-    this.vehicle = vehicle;
+  public Transport() {
+	// TODO: dynamic properties
+	this.payloadMax = 5;
+	this.payloadAboveCost = 0.02f;
   }
 
   public Vehicle getVehicle() {
@@ -67,8 +52,8 @@ public class Transport implements Serializable {
 	this.vehicle = vehicle;
   }
 
-public String toString() {
-    return "Transport[" + this.roadType + ", " + this.costPerKm + "]";
+  public String toString() {
+    return "Transport[" + this.costPerKm + "]";
   }
   
   public long getId() {
@@ -80,6 +65,17 @@ public String toString() {
   }
   
   public Float costByDistance(Float km) {
+	  // TODO: dynamic properties
+	  switch(roadType) {
+	  	case "paved":
+	  		this.costPerKm = 0.54f;
+	  		break;
+	  	case "dirt":
+	  		this.costPerKm = 0.62f;
+	  		break;
+		default:
+			throw new IllegalArgumentException("Invalid road type " + roadType);
+	  }
 	  return km * this.costPerKm;
   }
   
@@ -89,5 +85,9 @@ public String toString() {
 		  return (this.payloadAboveCost * diff) * km;
 	  }
 	  return 0f;
+  }
+
+  public void setRoadType(String roadType) {
+	  this.roadType = roadType;
   }
 }

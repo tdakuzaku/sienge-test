@@ -1,6 +1,6 @@
 
-# Spring Demo
-it is a basic web app, written using **Spring Boot**. Credits: [gpaulo00](https://github.com/gpaulo00)
+# Spring Boot
+Based on the **Spring Boot**. Credits: [gpaulo00](https://github.com/gpaulo00)
 
 ## Build
 Run `mvn package` to build the project, this will create a single file
@@ -18,13 +18,6 @@ and then run `yarn start` in the `src/main/webapp` folder. It should run in <htt
 If you want to check that it just work, run `mvn verify`.
 Also, to run only the unit test, use `mvn test`. And to run only
 the integration tests, use  `mvn failsafe:integration-test`.
-
-## Documentation
-The documentation of the **REST API** is built automatically on `mvn package`. You can see it
-by running the server and going to <http://localhost:8080/docs>.
-
-Also, you can see it after a `mvn prepare-package`, that will run the tests and generate the documentation
-into `target/generated-docs/index.html`.
 
 ## Built With
 * [Java](https://www.java.com/download/) - Programming Language

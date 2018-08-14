@@ -24,14 +24,21 @@ public class TransportServiceTest {
     }
 
     private final Vehicle v1 = new Vehicle("bucket_truck", 8);
-    private final Transport t1 = new Transport("paved");
-    private final Transport t2 = new Transport("dirt");
+    private final Vehicle v2 = new Vehicle("truck_trunk", 4);
+    private final Transport t1 = new Transport();
     private final TransportService ts1 = new TransportService();
     
     @Test
-    public void checkSimpleShipping() {
+    public void checkEx1Shipping() {
     	RequestWrapper req = new RequestWrapper(v1, t1, 100f, 0f);
         assertThat(ts1.shippingCalculation(req))
             .isEqualTo(62.7f);
     }
+    
+//    @Test
+//    public void checkEx2Shipping() {
+//    	RequestWrapper req = new RequestWrapper(v2, t1, 60f, 0f);
+//        assertThat(ts1.shippingCalculation(req))
+//            .isEqualTo(37.2f);
+//    }
 }

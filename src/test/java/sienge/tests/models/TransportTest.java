@@ -21,16 +21,14 @@ public class TransportTest {
     public void setUp() {
     }
 
-    private final Transport t1 = new Transport("paved");
-    private final Transport t2 = new Transport("dirt");
-    private final Transport t3 = new Transport("dirt");    
-    private final Transport t4 = new Transport("dirt");
+    private final Transport t1 = new Transport();
     private final Vehicle v3 = new Vehicle("truck_trunk", 5);
     private final Vehicle v4 = new Vehicle("truck_trunk", 8);
     
     @Test
     public void checkPavedCost() {
     		Float cost = 100f;
+    		t1.setRoadType("paved");
         assertThat(t1.costByDistance(cost))
             .isEqualTo(54.000004f); //wtf
     }
@@ -38,23 +36,24 @@ public class TransportTest {
     @Test
     public void checkDirtCost() {
     		Float cost = 100f;
-        assertThat(t2.costByDistance(cost))
+    		t1.setRoadType("dirt");
+        assertThat(t1.costByDistance(cost))
             .isEqualTo(62f);
     }
     
     @Test
     public void checkNormalPaylodCost() {
     		Float km = 100f;    		
-    		t3.setVehicle(v3);
-        assertThat(t3.costByPayload(km))
+    		t1.setVehicle(v3);
+        assertThat(t1.costByPayload(km))
             .isEqualTo(0f);
     }
     
     @Test
     public void checkAbovePaylodCost() {
 		Float km = 100f;
-    		t4.setVehicle(v4);
-        assertThat(t4.costByPayload(km))
+    		t1.setVehicle(v4);
+        assertThat(t1.costByPayload(km))
             .isEqualTo(6.0f);
     }
 }
