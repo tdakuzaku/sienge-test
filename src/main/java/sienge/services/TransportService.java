@@ -1,6 +1,7 @@
 package sienge.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import sienge.models.RequestWrapper;
@@ -10,6 +11,9 @@ import sienge.models.Vehicle;
 @Service
 public class TransportService implements TransportServiceInterface {
 
+  @Value("${transport.paved.cost}")
+  private String pavedCost;
+	
   @Autowired
   public TransportService() {
   }
