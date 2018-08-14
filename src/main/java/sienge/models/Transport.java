@@ -8,18 +8,49 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @Entity
 @Table(name = "transports")
 public class Transport implements Serializable {
   private static final long serialVersionUID = 1709299723906950395L;
 
+  // TODO: dynamic properties read
+  @Value("${transport.paved.cost}")
+  private Float pavedCost;
+  
+  @Value("${transport.dirt.cost}")
+  private Float dirtCost;
+ 
+  @Value("${payload.max}")
+  private Integer payloadMax;
+  
+  @Value("${payload.above.cost}")
+  private Float payloadAboveCost;
+  
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
   private Vehicle vehicle;
+  
+  private String roadType;
+  
+  private Float costPerKm;
 
-  public Transport() {
+  public Transport(String roadType) {
+	  this.roadType = roadType;
+	  // TODO: dynamic properties
+	  switch(roadType) {
+	  	case "paved":
+	  		this.costPerKm = 0.54f;
+	  		break;
+	  	case "dirt":
+	  		this.costPerKm = 0.62f;
+	  		break;
+  		default:
+  			throw new IllegalArgumentException("Invalid road type " + roadType);
+	  }
   }
 
   public Transport(Vehicle vehicle) {
@@ -35,7 +66,7 @@ public class Transport implements Serializable {
   }
 
 public String toString() {
-    return "Transport[" + vehicle + "]";
+    return "Transport[" + this.roadType + ", " + this.costPerKm + "]";
   }
   
   public long getId() {
@@ -46,15 +77,11 @@ public String toString() {
     this.id = id;
   }
   
-  public Float costByDistance(Float km, Float cost) {
-	  return km * cost;
+  public Float costByDistance(Float km) {
+	  return km * this.costPerKm;
   }
   
-  public Float costByVehicleType(Float cost) {
-	  return this.vehicle.getVehicleCost(cost);
-  }
-  
-  public Float costByPayload(Integer max, Float cost) {
-	  return (max - this.vehicle.getPayload()) * cost;
+  public Float costByPayload() {
+	  return (this.payloadMax - this.vehicle.getPayload()) * this.payloadAboveCost;
   }
 }

@@ -20,12 +20,13 @@ public class TransportService implements TransportServiceInterface {
 
   public Float shippingCalculation(RequestWrapper req) {
 	  Vehicle v = new Vehicle("cart", 1);
-	  Transport t = new Transport();
+	  Transport t = new Transport("paved");
 	  t.setVehicle(v);
-	  Float distancePavedCost = t.costByDistance((float) 1, (float) 1);
-	  Float distanceDirtCost = t.costByDistance((float) 10, (float) 2);
-	  Float vehicleCost = t.costByDistance((float) 100, (float) 3);
-	  Float payloadCost = t.costByPayload(5, (float) 4);
-	  return distancePavedCost + distanceDirtCost + vehicleCost + payloadCost;
+//	  Float distancePavedCost = t.costByDistance((float) 1, (float) 1);
+//	  Float distanceDirtCost = t.costByDistance((float) 10, (float) 2);
+//	  Float vehicleCost = t.costByDistance((float) 100, (float) 3);
+//	  Float payloadCost = t.costByPayload(5, (float) 4);
+//	  return distancePavedCost + distanceDirtCost + vehicleCost + payloadCost;
+	  return 0f;
   }
 }
