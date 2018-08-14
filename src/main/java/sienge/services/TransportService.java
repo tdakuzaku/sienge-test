@@ -19,7 +19,7 @@ public class TransportService implements TransportServiceInterface {
   }
 
   public Float shippingCalculation(RequestWrapper req) {
-	  Vehicle v = new Vehicle((float) 10, 5);
+	  Vehicle v = new Vehicle("cart", 1);
 	  Transport t = new Transport();
 	  t.setVehicle(v);
 	  Float distancePavedCost = t.costByDistance((float) 1, (float) 1);

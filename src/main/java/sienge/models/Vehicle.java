@@ -12,15 +12,27 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @Entity
 @Table(name = "vehicles")
 public class Vehicle implements Serializable {
   private static final long serialVersionUID = 1709299723906950395L;
 
+  // TODO: dynamic properties read
+  @Value("${vehicle.truck_trunk.cost}")
+  private Float truckTrunkCost;  
+  
+  @Value("${vehicle.bucket_truck.cost}")
+  private Float bucketTruckCost;
+  
+  @Value("${vehicle.cart.cost}")
+  private Float cartCost;
+  
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
-
+  
   @NotNull
   @NotEmpty
   @Column
@@ -30,7 +42,7 @@ public class Vehicle implements Serializable {
   @NotNull
   @NotEmpty
   @Column
-  private Float costByKm;
+  private Float multiplier;
 
   @Positive
   @NotNull
@@ -41,8 +53,8 @@ public class Vehicle implements Serializable {
   public Vehicle() {
   }
 
-  public Vehicle(Float costByKm, Integer payload) {
-    this.costByKm = costByKm;
+  public Vehicle(String type, Integer payload) {
+    this.setVehicleType(type);
     this.payload = payload;
   }
 
@@ -56,6 +68,20 @@ public class Vehicle implements Serializable {
 
   public void setVehicleType(String vehicleType) {
     this.vehicleType = vehicleType;
+    // TODO: dynamic properties
+    switch (vehicleType) {
+    		case "truck_trunk":
+	    		this.multiplier = 1f;
+	    		break;
+    		case "bucket_truck":
+	    		this.multiplier = 1.05f;
+	    		break;
+    		case "cart":
+	    		this.multiplier = 1.12f;
+	    		break;
+    		default:
+            throw new IllegalArgumentException("Invalid vehicle type " + vehicleType);
+    }
   }
 
   public Integer getPayload() {
@@ -66,12 +92,12 @@ public class Vehicle implements Serializable {
 	this.payload = payload;
   }  
   
-  public Float getCostByKm() {
-	return costByKm;
+  public Float getVehicleCost(Float cost) {
+	return this.multiplier * cost;
   }
 
-  public void setCostByKm(Float costByKm) {
-	this.costByKm = costByKm;
+  public void setVehicleMultiplier(Float multiplier) {
+	this.multiplier = multiplier;
   }
   
   public long getId() {

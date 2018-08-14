@@ -51,7 +51,7 @@ public String toString() {
   }
   
   public Float costByVehicleType(Float cost) {
-	  return this.vehicle.getCostByKm() * cost;
+	  return this.vehicle.getVehicleCost(cost);
   }
   
   public Float costByPayload(Integer max, Float cost) {

@@ -1,6 +1,6 @@
 
 # Spring Demo
-it is a basic web app, written using **Spring Boot**.
+it is a basic web app, written using **Spring Boot**. Credits: [gpaulo00](https://github.com/gpaulo00)
 
 ## Build
 Run `mvn package` to build the project, this will create a single file
@@ -35,6 +35,3 @@ into `target/generated-docs/index.html`.
 * [Webpack](https://webpack.js.org/) - JavaScriptModule Bundler
 * [Yarn](https://yarnpkg.com/docs/install) - JavaScript Package Manager
 * [Vue](https://vuejs.org) - JavaScript UI Framework
-
-## Author
-* **Gustavo Paulo** - [gpaulo00](https://github.com/gpaulo00)

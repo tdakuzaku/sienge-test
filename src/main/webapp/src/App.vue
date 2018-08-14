@@ -17,18 +17,10 @@ import { mapActions } from 'vuex'
 export default Vue.extend({
   data() {
     return {
-      title: 'Sienge | Transporte',
-      query: null,
-      solo: true,
+      title: 'Sienge | Transporte'
     }
   },
-  watch: {
-    query(val) {
-      this.search(val)
-    },
-  },
   methods: {
-    ...mapActions(['search']),
   },
   name: 'App',
 })
