@@ -12,7 +12,9 @@
                   <v-text-field v-model="data.dirtDistanceKm" prepend-icon="explore_off" label="Rodovia não-pavimentada (Km)" type="number"></v-text-field>
                   <v-select v-model="data.vehicle.vehicleType" prepend-icon="local_shipping" item-text="label" item-value="id" :items="vehicles" label="Veículo"></v-select>
                   <v-text-field v-model="data.vehicle.payload" prepend-icon="get_app" label="Carga (Ton)" type="number"></v-text-field>
-                  <v-btn color="success" @click="calculate">Calcular</v-btn>
+                  <div class="text-xs-center">
+                    <v-btn color="success" @click="calculate">Calcular</v-btn>
+                  </div>
                 </v-form>
               </v-card-text>
               <v-card-actions>
