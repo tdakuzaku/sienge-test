@@ -29,7 +29,7 @@ import { mapActions } from 'vuex'
 export default Vue.extend({
   data() {
     return {
-      title: 'SpringBoot Demo',
+      title: 'Sienge | Transporte',
       query: null,
       solo: true,
     }
