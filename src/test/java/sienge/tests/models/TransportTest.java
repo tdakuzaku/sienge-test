@@ -55,6 +55,6 @@ public class TransportTest {
 		Float km = 100f;
     		t4.setVehicle(v4);
         assertThat(t4.costByPayload(km))
-            .isEqualTo(2.0f);
+            .isEqualTo(6.0f);
     }
 }

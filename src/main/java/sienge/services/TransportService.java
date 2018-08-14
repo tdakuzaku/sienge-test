@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import sienge.models.RequestWrapper;
-import sienge.models.Transport;
-import sienge.models.Vehicle;
 
 @Service
 public class TransportService implements TransportServiceInterface {
@@ -19,14 +17,12 @@ public class TransportService implements TransportServiceInterface {
   }
 
   public Float shippingCalculation(RequestWrapper req) {
-	  Vehicle v = new Vehicle("cart", 1);
-	  Transport t = new Transport("paved");
-	  t.setVehicle(v);
-//	  Float distancePavedCost = t.costByDistance((float) 1, (float) 1);
-//	  Float distanceDirtCost = t.costByDistance((float) 10, (float) 2);
-//	  Float vehicleCost = t.costByDistance((float) 100, (float) 3);
-//	  Float payloadCost = t.costByPayload(5, (float) 4);
-//	  return distancePavedCost + distanceDirtCost + vehicleCost + payloadCost;
-	  return 0f;
+	  req.transport.setVehicle(req.vehicle);
+	  Float pavedCost = req.transport.costByDistance(req.pavedDistanceKm);
+	  Float dirtCost = req.transport.costByDistance(req.dirtDistanceKm);
+	  Float distanceCost = pavedCost + dirtCost;
+	  Float vehicleCost = req.vehicle.getVehicleCost(distanceCost);
+	  Float payloadCost = req.transport.costByPayload(req.pavedDistanceKm + req.dirtDistanceKm);
+	  return vehicleCost + payloadCost;
   }
 }

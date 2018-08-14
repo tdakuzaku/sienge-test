@@ -84,6 +84,10 @@ public String toString() {
   }
   
   public Float costByPayload(Float km) {
-	  return (this.vehicle.getPayload() > this.payloadMax) ? this.payloadAboveCost * km : 0; 
+	  Integer diff = this.vehicle.getPayload() - this.payloadMax;
+	  if (diff > 0) {
+		  return (this.payloadAboveCost * diff) * km;
+	  }
+	  return 0f;
   }
 }
