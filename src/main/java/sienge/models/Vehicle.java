@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 @Entity
-@Table(name = "transports")
+@Table(name = "vehicles")
 public class Vehicle implements Serializable {
   private static final long serialVersionUID = 1709299723906950395L;
 
@@ -41,8 +41,8 @@ public class Vehicle implements Serializable {
   public Vehicle() {
   }
 
-  public Vehicle(String roadType, String vehicleType, Integer payload) {
-    this.vehicleType = vehicleType;
+  public Vehicle(Float costByKm, Integer payload) {
+    this.costByKm = costByKm;
     this.payload = payload;
   }
 

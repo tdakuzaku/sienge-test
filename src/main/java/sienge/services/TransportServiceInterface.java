@@ -1,7 +1,7 @@
 package sienge.services;
 
-import sienge.models.Transport;
+import sienge.models.RequestWrapper;
 
 public interface TransportServiceInterface {
-  public Float shippingCalculation(Transport t);
+  public Float shippingCalculation(RequestWrapper req);
 }

@@ -3,7 +3,7 @@ package sienge.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import sienge.models.Transport;
+import sienge.models.RequestWrapper;
 import sienge.services.TransportServiceInterface;
 
 @RequestMapping("/transports")
@@ -22,7 +22,7 @@ public class TransportController {
   }
 
   @PostMapping("/calculate/")
-  public Float calculate(@RequestBody Transport t) {
-    return transportService.shippingCalculation(t);
+  public Float calculate(@RequestBody RequestWrapper requestWrapper) {
+    return transportService.shippingCalculation(requestWrapper);
   }
 }
