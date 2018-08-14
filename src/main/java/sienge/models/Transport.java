@@ -53,7 +53,7 @@ public class Transport implements Serializable {
   }
 
   public String toString() {
-    return "Transport[" + this.costPerKm + "]";
+    return "Transport[" + this.roadType + ", " + this.costPerKm + "]";
   }
   
   public long getId() {

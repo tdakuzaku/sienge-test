@@ -34,8 +34,8 @@ export default Vue.extend({
   data() {
     return {
       vehicles: [
-        { id: 'truck_trunk', label: 'Caminhão caçamba' },
-        { id: 'bucket_truck', label: 'Caminhão baú' },
+        { id: 'truck_trunk', label: 'Caminhão baú' },
+        { id: 'bucket_truck', label: 'Caminhão caçamba' },
         { id: 'cart', label: 'Carreta' }
       ],
       data: {

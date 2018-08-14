@@ -35,10 +35,10 @@ public class TransportServiceTest {
             .isEqualTo(62.7f);
     }
     
-//    @Test
-//    public void checkEx2Shipping() {
-//    	RequestWrapper req = new RequestWrapper(v2, t1, 60f, 0f);
-//        assertThat(ts1.shippingCalculation(req))
-//            .isEqualTo(37.2f);
-//    }
+    @Test
+    public void checkEx2Shipping() {
+    	RequestWrapper req = new RequestWrapper(v2, t1, 0f, 60f);
+        assertThat(ts1.shippingCalculation(req))
+            .isEqualTo(37.2f);
+    }
 }
