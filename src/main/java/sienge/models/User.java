@@ -1,4 +1,4 @@
-package org.gpaulo.springdemo.models;
+package sienge.models;
 
 import java.io.Serializable;
 import javax.persistence.*;

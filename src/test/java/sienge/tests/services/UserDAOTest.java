@@ -1,4 +1,4 @@
-package org.gpaulo.springdemo.services;
+package sienge.tests.services;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
@@ -6,8 +6,6 @@ import static org.mockito.BDDMockito.*;
 import java.util.Arrays;
 import java.util.Optional;
 
-import org.gpaulo.springdemo.models.User;
-import org.gpaulo.springdemo.repos.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +14,11 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import sienge.models.User;
+import sienge.repos.UserRepository;
+import sienge.services.UserDAO;
+import sienge.services.UserService;
 
 @RunWith(SpringRunner.class)
 public class UserDAOTest {

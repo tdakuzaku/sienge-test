@@ -1,11 +1,12 @@
-package org.gpaulo.springdemo.services;
+package sienge.services;
 
 import java.util.Optional;
 
-import org.gpaulo.springdemo.models.User;
-import org.gpaulo.springdemo.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import sienge.models.User;
+import sienge.repos.UserRepository;
 
 @Service
 public class UserDAO implements UserService {

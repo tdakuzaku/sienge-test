@@ -1,4 +1,4 @@
-package org.gpaulo.springdemo;
+package sienge.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

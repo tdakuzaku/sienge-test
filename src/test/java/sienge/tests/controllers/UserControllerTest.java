@@ -1,4 +1,4 @@
-package org.gpaulo.springdemo.controllers;
+package sienge.tests.controllers;
 
 import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -10,8 +10,10 @@ import java.util.Optional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.gpaulo.springdemo.models.User;
-import org.gpaulo.springdemo.services.UserService;
+import sienge.controllers.UserController;
+import sienge.models.User;
+import sienge.services.UserService;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package org.gpaulo.springdemo.repos;
+package sienge.tests.repos;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.gpaulo.springdemo.models.User;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +15,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import sienge.models.User;
+import sienge.repos.UserRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

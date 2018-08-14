@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.gpaulo</groupId>
+	<groupId>sienge</groupId>
 	<artifactId>spring-demo</artifactId>
 	<version>0.1.1</version>
 	<packaging>jar</packaging>
 
-	<name>spring-demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>sienge-test</name>
+	<description>Avaliação para Desenvolvedor de Software – Softplan UNIC</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

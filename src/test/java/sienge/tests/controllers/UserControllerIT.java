@@ -1,4 +1,4 @@
-package org.gpaulo.springdemo.controllers;
+package sienge.tests.controllers;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
@@ -14,9 +14,6 @@ import static org.assertj.core.api.Assertions.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.gpaulo.springdemo.Application;
-import org.gpaulo.springdemo.models.User;
-import org.gpaulo.springdemo.repos.UserRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -34,7 +31,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
-import io.restassured.specification.RequestSpecification;;
+import io.restassured.specification.RequestSpecification;
+import sienge.Application;
+import sienge.models.User;
+import sienge.repos.UserRepository;;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = Application.class)
 @RunWith(SpringRunner.class)

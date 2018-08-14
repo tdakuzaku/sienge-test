@@ -1,8 +1,8 @@
-package org.gpaulo.springdemo.services;
+package sienge.services;
 
 import java.util.Optional;
 
-import org.gpaulo.springdemo.models.User;
+import sienge.models.User;
 
 public interface UserService {
   public User save(User u);

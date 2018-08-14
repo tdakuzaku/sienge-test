@@ -1,24 +1,26 @@
-package org.gpaulo.springdemo.controllers;
+package sienge.controllers;
 
 import java.util.Optional;
-import org.gpaulo.springdemo.models.User;
-import org.gpaulo.springdemo.services.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import sienge.models.User;
+import sienge.services.UserService;
+
 @RequestMapping("/users")
 @RestController
-public class UserController {
+public class TransportController {
   private UserService userService;
 
   /**
-   * Setup the UserController
+   * Setup the TransportController
    *
    * @param userService UserService
    */
   @Autowired
-  public UserController(UserService userService) {
+  public TransportController(UserService userService) {
     this.userService = userService;
   }
 
